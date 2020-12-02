@@ -29,9 +29,6 @@ sysinfo.txt
 .consulo/
 /*.tmp
 /*.svd
- 
-Assets/Assemblies/MREUnity*.*
-!Assets/Assemblies/*.dll.meta
 
 # ============ #
 # OS generated #
