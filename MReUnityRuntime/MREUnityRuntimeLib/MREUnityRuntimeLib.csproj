@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D8EA76B-B56F-405E-96BD-15E15B0F3A6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MixedRealityExtension</RootNamespace>
+    <AssemblyName>MREUnityRuntimeLib</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OutputPath>..\bin\$(Configuration)</OutputPath>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1591;1573; 0067;</NoWarn>
+    <DocumentationFile>..\bin\Debug\MREUnityRuntimeLib.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1591;1573; 0067;</NoWarn>
+    <DocumentationFile>..\bin\Release\MREUnityRuntimeLib.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\tools\VSCodeAnalysis\MRESDK_Ruleset.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <UnityVersion>2019.4.2f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GLTFSerialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\GLTFSerialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath Condition="Exists('C:\Program Files\Unity\Editor\Data\Managed')">C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('C:\Program Files\Unity\Hub\Editor\$(UnityVersion)\Editor\Data\Managed')">C:\Program Files\Unity\Hub\Editor\$(UnityVersion)\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('C:\Program Files\Unity\$(UnityVersion)\Editor\Data\Managed')">C:\Program Files\Unity\$(UnityVersion)\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('C:\Program Files\Unity_$(UnityVersion)\Editor\Data\Managed')">C:\Program Files\Unity_$(UnityVersion)\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('..\Libraries\UnityEngine.dll')">..\Libraries\UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('$(UNITY_ROOT)\Editor\Data\Managed')">$(UNITY_ROOT)\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityGLTF">
+      <HintPath>..\Libraries\UnityGLTF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animation\Animation.cs" />
+    <Compile Include="Animation\BaseAnimation.cs" />
+    <Compile Include="Animation\Interpolations.cs" />
+    <Compile Include="Animation\Definitions.cs" />
+    <Compile Include="Animation\AnimationEvent.cs" />
+    <Compile Include="Animation\AnimationKeyframe.cs" />
+    <Compile Include="Animation\AnimationManager.cs" />
+    <Compile Include="Animation\AnimationState.cs" />
+    <Compile Include="Animation\AnimationWrapMode.cs" />
+    <Compile Include="Animation\JTokenPool.cs" />
+    <Compile Include="Animation\MWSetAnimationStateOptions.cs" />
+    <Compile Include="Animation\NativeAnimation.cs" />
+    <Compile Include="Animation\TargetPath.cs" />
+    <Compile Include="Assets\AssetCache.cs" />
+    <Compile Include="Assets\AssetLoadThrottling.cs" />
+    <Compile Include="Assets\PrefabAnimationTargets.cs" />
+    <Compile Include="Behaviors\ActionData\BaseActionData.cs" />
+    <Compile Include="Behaviors\ActionData\BaseToolData.cs" />
+    <Compile Include="Behaviors\ActionData\ButtonData.cs" />
+    <Compile Include="Behaviors\ActionData\PenData.cs" />
+    <Compile Include="Behaviors\ActionData\PointData.cs" />
+    <Compile Include="Behaviors\ActionData\TargetData.cs" />
+    <Compile Include="Behaviors\Contexts\BehaviorContextFactory.cs" />
+    <Compile Include="Behaviors\Contexts\BehaviorContextBase.cs" />
+    <Compile Include="Behaviors\Contexts\ButtonBehaviorContext.cs" />
+    <Compile Include="Behaviors\Contexts\PenBehaviorContext.cs" />
+    <Compile Include="Behaviors\Contexts\PhysicalToolBehaviorContext.cs" />
+    <Compile Include="Behaviors\Contexts\TargetBehaviorContext.cs" />
+    <Compile Include="App\AppManifest.cs" />
+    <Compile Include="Core\CollisionLayers.cs" />
+    <Compile Include="Assets\AssetManager.cs" />
+    <Compile Include="Assets\AssetGroup.cs" />
+    <Compile Include="Assets\AssetSource.cs" />
+    <Compile Include="Core\ActorCommandQueue.cs" />
+    <Compile Include="Core\Attachment.cs" />
+    <Compile Include="Core\Collision\CollisionData.cs" />
+    <Compile Include="Core\Collision\ColliderEventType.cs" />
+    <Compile Include="Core\Collision\ContactPoint.cs" />
+    <Compile Include="Core\Components\MREAttachmentComponent.cs" />
+    <Compile Include="Core\ColliderGeometry.cs" />
+    <Compile Include="Core\Interfaces\ICollider.cs" />
+    <Compile Include="Core\MediaCommand.cs" />
+    <Compile Include="Core\Permissions.cs" />
+    <Compile Include="Core\PhysicsBridge.cs" />
+    <Compile Include="Core\Physics\IPrediction.cs" />
+    <Compile Include="Core\Physics\JitterBuffer.cs" />
+    <Compile Include="Core\Physics\PredictionInterpolation.cs" />
+    <Compile Include="Core\SoundManager.cs" />
+    <Compile Include="Core\MediaStateOptions.cs" />
+    <Compile Include="Core\Types\MWVector2.cs" />
+    <Compile Include="Core\UserManager.cs" />
+    <Compile Include="Core\VideoStreamDescription.cs" />
+    <Compile Include="Factories\DefaultMaterialPatcher.cs" />
+    <Compile Include="Factories\SimpleLayerApplicator.cs" />
+    <Compile Include="Factories\SimplePermissionsManager.cs" />
+    <Compile Include="Messaging\Events\Types\ActorCorrectionEvent.cs" />
+    <Compile Include="Messaging\Events\Types\ColliderEvent.cs" />
+    <Compile Include="Messaging\Events\Types\PhysicsBridgeUpdated.cs" />
+    <Compile Include="Messaging\Events\Types\TriggerEvent.cs" />
+    <Compile Include="Messaging\Payloads\Converters\UnsignedConverter.cs" />
+    <Compile Include="Patching\IPatchable.cs" />
+    <Compile Include="Patching\PatchProperty.cs" />
+    <Compile Include="Patching\Patchable.cs" />
+    <Compile Include="Patching\Types\AnimationPatch.cs" />
+    <Compile Include="Patching\Types\AppearancePatch.cs" />
+    <Compile Include="Patching\Types\LookAtPatch.cs" />
+    <Compile Include="Patching\Types\PhysicsBridgePatch.cs" />
+    <Compile Include="Patching\Types\ActorTransformPatch.cs" />
+    <Compile Include="Patching\Types\ScaledTransformPatch.cs" />
+    <Compile Include="PluginInterfaces\Behaviors\IToolBehavior.cs" />
+    <Compile Include="PluginInterfaces\Behaviors\IPenBehavior.cs" />
+    <Compile Include="PluginInterfaces\IDialogFactory.cs" />
+    <Compile Include="PluginInterfaces\IHostAppUser.cs" />
+    <Compile Include="PluginInterfaces\ILayerApplicator.cs" />
+    <Compile Include="PluginInterfaces\IPermissionManager.cs" />
+    <Compile Include="Messaging\Payloads\AssetCommandPayloads.cs" />
+    <Compile Include="Patching\Types\AttachmentPatch.cs" />
+    <Compile Include="Messaging\Payloads\Converters\CollisionGeometryConverter.cs" />
+    <Compile Include="Patching\Types\Vector2Patch.cs" />
+    <Compile Include="Patching\Types\ColliderPatch.cs" />
+    <Compile Include="PluginInterfaces\IAssetCache.cs" />
+    <Compile Include="Assets\Definitions.cs" />
+    <Compile Include="Assets\AssetLoader.cs" />
+    <Compile Include="Core\Components\AnimationComponent.cs" />
+    <Compile Include="Core\Components\BehaviorComponent.cs" />
+    <Compile Include="Core\Components\ActorComponentBase.cs" />
+    <Compile Include="Factories\GLTFImporterFactory.cs" />
+    <Compile Include="Messaging\Protocols\Idle.cs" />
+    <Compile Include="PluginInterfaces\IGltfImporterFactory.cs" />
+    <Compile Include="PluginInterfaces\ILibraryResourceFactory.cs" />
+    <Compile Include="PluginInterfaces\IMaterialPatcher.cs" />
+    <Compile Include="PluginInterfaces\IMRELogger.cs" />
+    <Compile Include="PluginInterfaces\ITextFactory.cs" />
+    <Compile Include="Behaviors\Actions\Action.cs" />
+    <Compile Include="Behaviors\Behaviors.cs" />
+    <Compile Include="Behaviors\Actions\BehaviorActionHandler.cs" />
+    <Compile Include="Core\Components\LookAtComponent.cs" />
+    <Compile Include="Core\Text.cs" />
+    <Compile Include="Factories\MWTextFactory.cs" />
+    <Compile Include="PluginInterfaces\IVideoPlayer.cs" />
+    <Compile Include="PluginInterfaces\IVideoPlayerFactory.cs" />
+    <Compile Include="RPC\RPCChannelInterface.cs" />
+    <Compile Include="PluginInterfaces\Behaviors\IBehavior.cs" />
+    <Compile Include="PluginInterfaces\Behaviors\IBehaviorFactory.cs" />
+    <Compile Include="PluginInterfaces\Behaviors\IButtonBehavior.cs" />
+    <Compile Include="PluginInterfaces\Behaviors\ITargetBehavior.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Core\Actor.cs" />
+    <Compile Include="Core\ActorManager.cs" />
+    <Compile Include="Core\Collider.cs" />
+    <Compile Include="Core\Interfaces\ILight.cs" />
+    <Compile Include="Core\Interfaces\IMixedRealityExtensionObject.cs" />
+    <Compile Include="Core\Interfaces\IRigidBody.cs" />
+    <Compile Include="Core\Light.cs" />
+    <Compile Include="Core\MixedRealityExtensionObject.cs" />
+    <Compile Include="Core\RigidBody.cs" />
+    <Compile Include="Core\PrimitiveDefinition.cs" />
+    <Compile Include="API\MREApi.cs" />
+    <Compile Include="App\IMixedRealityExtensionApp.cs" />
+    <Compile Include="App\MixedRealityExtensionApp.cs" />
+    <Compile Include="Core\Interfaces\IText.cs" />
+    <Compile Include="LookAtMode.cs" />
+    <Compile Include="PluginInterfaces\IPrimitiveFactory.cs" />
+    <Compile Include="Factories\MWPrimitiveFactory.cs" />
+    <Compile Include="Messaging\Commands\Command.cs" />
+    <Compile Include="Messaging\Commands\CommandHandler.cs" />
+    <Compile Include="Messaging\Commands\CommandManager.cs" />
+    <Compile Include="Core\Interfaces\IActor.cs" />
+    <Compile Include="Messaging\Commands\ICommand.cs" />
+    <Compile Include="Messaging\Commands\ICommandHandlerContext.cs" />
+    <Compile Include="Messaging\Commands\ICommandManager.cs" />
+    <Compile Include="Messaging\Commands\ICommandPayload.cs" />
+    <Compile Include="Core\Interfaces\IUser.cs" />
+    <Compile Include="Core\User.cs" />
+    <Compile Include="Core\Types\MWColor.cs" />
+    <Compile Include="Core\Types\MWQuaternion.cs" />
+    <Compile Include="Core\Types\MWTransform.cs" />
+    <Compile Include="Core\Types\MWVector3.cs" />
+    <Compile Include="IPC\IConnection.cs" />
+    <Compile Include="IPC\Connections\WebSocket.cs" />
+    <Compile Include="Messaging\Events\IMWEvent.cs" />
+    <Compile Include="Messaging\Events\MWEventBase.cs" />
+    <Compile Include="Messaging\Events\MWEventManager.cs" />
+    <Compile Include="Messaging\Events\Types\ActorChangedEvent.cs" />
+    <Compile Include="Messaging\Events\Types\BehaviorEvent.cs" />
+    <Compile Include="Messaging\Events\Types\SetAnimationStateEvent.cs" />
+    <Compile Include="Messaging\Events\Types\UserEvent.cs" />
+    <Compile Include="Messaging\Events\Types\ResponseEvent.cs" />
+    <Compile Include="Messaging\Payloads\Converters\DashFormattedEnumConverter.cs" />
+    <Compile Include="Messaging\Protocols\Sync.cs" />
+    <Compile Include="Messaging\Protocols\Protocol.cs" />
+    <Compile Include="Messaging\Payloads\IPayload.cs" />
+    <Compile Include="Messaging\Message.cs" />
+    <Compile Include="Messaging\Payloads\Payload.cs" />
+    <Compile Include="Messaging\Payloads\NetworkCommandPayloads.cs" />
+    <Compile Include="Messaging\Payloads\PayloadConverter.cs" />
+    <Compile Include="Messaging\Payloads\Payloads.cs" />
+    <Compile Include="Messaging\Payloads\PayloadTypeRegistry.cs" />
+    <Compile Include="Messaging\Protocols\IProtocol.cs" />
+    <Compile Include="Messaging\Protocols\Execution.cs" />
+    <Compile Include="Messaging\Protocols\Handshake.cs" />
+    <Compile Include="Messaging\Tracing.cs" />
+    <Compile Include="Patching\PatchingUtils.cs" />
+    <Compile Include="Patching\Types\ActorPatch.cs" />
+    <Compile Include="Patching\Types\ColorPatch.cs" />
+    <Compile Include="Patching\Types\LightPatch.cs" />
+    <Compile Include="Patching\Types\QuaternionPatch.cs" />
+    <Compile Include="Patching\Types\RigidBodyPatch.cs" />
+    <Compile Include="Patching\Types\TextPatch.cs" />
+    <Compile Include="Patching\Types\TransformPatch.cs" />
+    <Compile Include="Patching\Types\UserPatch.cs" />
+    <Compile Include="Patching\Types\Vector3Patch.cs" />
+    <Compile Include="ProceduralToolkit\ArrayE.cs" />
+    <Compile Include="ProceduralToolkit\CompoundMeshDraft.cs" />
+    <Compile Include="ProceduralToolkit\Directions.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Circle2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Circle3.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Closest2D.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Closest3D.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Distance2D.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Distance3D.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Geometry.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersect2D.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersect3D.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionCircleCircle.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionLineCircle.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionLineLine2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionLineRay2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionLineSegment2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionLineSphere.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionRayCircle.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionRayRay2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionRaySegment2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionRaySphere.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionSegmentCircle.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionSegmentSegment2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionSegmentSphere.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Intersections\IntersectionSphereSphere.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\IntersectionType.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Line2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Line3.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Segment2.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Segment3.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\Sphere.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\StraightSkeleton\Plan.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\StraightSkeleton\StraightSkeleton.cs" />
+    <Compile Include="ProceduralToolkit\Geometry\StraightSkeleton\StraightSkeletonGenerator.cs" />
+    <Compile Include="ProceduralToolkit\MeshDraft.cs" />
+    <Compile Include="ProceduralToolkit\MeshDraftPrimitives.cs" />
+    <Compile Include="ProceduralToolkit\PTUtils.cs" />
+    <Compile Include="ProceduralToolkit\RendererProperties.cs" />
+    <Compile Include="ProceduralToolkit\VectorE.cs" />
+    <Compile Include="RPC\RPCInterface.cs" />
+    <Compile Include="RPC\RPCHandler.cs" />
+    <Compile Include="Util\CubicBezier.cs" />
+    <Compile Include="Util\DeterministicGuids.cs" />
+    <Compile Include="Util\Logging\ConsoleLogger.cs" />
+    <Compile Include="Util\Logging\UnityLogger.cs" />
+    <Compile Include="Util\ObjectManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\TransformLerper.cs" />
+    <Compile Include="Util\Unity\MWContinuation.cs" />
+    <Compile Include="Util\Unity\MWGOTreeWalker.cs" />
+    <Compile Include="Util\Unity\MWUnityHelpers.cs" />
+    <Compile Include="Util\Unity\MWUnityTypeExtensions.cs" />
+    <Compile Include="Assets\AssetFetcher.cs" />
+    <Compile Include="Util\UtilMethods.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+	  copy "$(ProjectDir)\link.xml" "$(ProjectDir)\..\bin\$(Configuration)\link.xml"
+      cd $(ProjectDir)\..\
+      if not exist "$(ProjectDir)\..\MREUnityProjects.xml" copy "$(ProjectDir)\..\MREUnityProjects.default.xml" "$(ProjectDir)\..\MREUnityProjects.xml"
+      PostBuildTool.exe $(ConfigurationName)
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
